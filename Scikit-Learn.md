@@ -40,6 +40,122 @@ from sklearn.model_selection import train_test_split
 
 ---
 
+# 🔹 Encoding Categorical Data
+
+Machine Learning models numbers samje che.  
+So text categories ne numbers ma convert karvu jaruri che.
+
+Example:
+```
+Color = ["Red", "Blue", "Green"]
+```
+
+---
+
+## 1️⃣ Label Encoding
+
+Each category ne unique number assign kare che.
+
+```python
+from sklearn.preprocessing import LabelEncoder
+
+le = LabelEncoder()
+
+colors = ["Red", "Blue", "Green", "Red"]
+encoded = le.fit_transform(colors)
+
+print(encoded)
+```
+
+Output:
+```
+[2 0 1 2]
+```
+
+Explanation:
+```
+Blue  -> 0
+Green -> 1
+Red   -> 2
+```
+
+⚠ Problem:
+Label Encoding ordinal relationship create kare che  
+(Example: 0 < 1 < 2), je badha models mate correct nathi.
+
+---
+
+## 2️⃣ One Hot Encoding
+
+Each category mate alag column create kare che.
+
+```python
+from sklearn.preprocessing import OneHotEncoder
+import numpy as np
+
+colors = np.array(["Red", "Blue", "Green", "Red"]).reshape(-1, 1)
+
+ohe = OneHotEncoder(sparse=False)
+encoded = ohe.fit_transform(colors)
+
+print(encoded)
+```
+
+Output:
+```
+[[0. 0. 1.]
+ [1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+```
+
+Explanation:
+
+| Blue | Green | Red |
+|------|-------|-----|
+| 0    | 0     | 1   |
+| 1    | 0     | 0   |
+| 0    | 1     | 0   |
+| 0    | 0     | 1   |
+
+Each row ma only one "1" hase.
+
+---
+
+## 3️⃣ Pandas Way (Easier Method)
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({"Color": ["Red", "Blue", "Green", "Red"]})
+
+encoded = pd.get_dummies(df, columns=["Color"])
+
+print(encoded)
+```
+
+Output:
+```
+   Color_Blue  Color_Green  Color_Red
+0           0            0          1
+1           1            0          0
+2           0            1          0
+3           0            0          1
+```
+
+---
+
+# 🔹 When to Use What?
+
+| Situation | Use |
+|-----------|-----|
+| Target column encoding | LabelEncoder |
+| Nominal categorical feature | OneHotEncoder |
+| Tree-based models | Label encoding works |
+| Linear models | Prefer One Hot |
+
+---
+
 # 🔹 Train Test Split
 
 ```python
