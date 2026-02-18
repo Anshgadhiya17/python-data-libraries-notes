@@ -413,13 +413,308 @@ Output:
 ✔ Avoids Python loops  
 
 ---
+# 🔢 NumPy Array Manipulation
 
-# 🚀 Summary
+NumPy provides powerful functions to manipulate arrays efficiently.
 
-NumPy is mainly used for:
+Array manipulation includes:
+✔ Reshaping  
+✔ Flattening  
+✔ Transposing  
+✔ Joining  
+✔ Splitting  
+✔ Adding/Removing elements  
+✔ Sorting  
 
-- Fast numerical calculations
-- Matrix operations
-- Machine Learning data preparation
-- Scientific computing
-- Foundation for Pandas & AI libraries
+---
+
+# 📦 Import NumPy
+
+```python
+import numpy as np
+```
+
+---
+
+# 🧱 Create Sample Array
+
+```python
+arr = np.array([[1, 2, 3],
+                [4, 5, 6]])
+
+print(arr)
+```
+
+---
+
+# 📐 1️⃣ Reshape Array
+
+Changes shape without changing data.
+
+```python
+arr = np.array([1,2,3,4,5,6])
+
+reshaped = arr.reshape(2,3)
+print(reshaped)
+```
+
+Auto reshape:
+
+```python
+arr.reshape(3, -1)
+```
+
+-1 automatically calculates dimension.
+
+---
+
+# 🔄 2️⃣ Flatten Array
+
+Convert multi-dimensional array into 1D.
+
+```python
+arr = np.array([[1,2,3],[4,5,6]])
+
+flat = arr.flatten()
+print(flat)
+```
+
+Alternative:
+
+```python
+arr.ravel()
+```
+
+---
+
+# 🔁 3️⃣ Transpose Array
+
+Rows ↔ Columns
+
+```python
+arr = np.array([[1,2,3],[4,5,6]])
+
+print(arr.T)
+```
+
+---
+
+# ➕ 4️⃣ Add Elements
+
+## Append
+
+```python
+arr = np.array([1,2,3])
+
+new_arr = np.append(arr, 4)
+print(new_arr)
+```
+
+## Insert
+
+```python
+np.insert(arr, 1, 99)
+```
+
+---
+
+# ➖ 5️⃣ Delete Elements
+
+```python
+arr = np.array([1,2,3,4])
+
+np.delete(arr, 1)
+```
+
+Delete row:
+
+```python
+arr = np.array([[1,2],[3,4]])
+np.delete(arr, 0, axis=0)
+```
+
+axis=0 → row  
+axis=1 → column  
+
+---
+
+# 🔗 6️⃣ Join Arrays
+
+## Concatenate
+
+```python
+a = np.array([1,2])
+b = np.array([3,4])
+
+np.concatenate((a,b))
+```
+
+## Stack
+
+```python
+np.hstack((a,b))   # Horizontal
+np.vstack((a,b))   # Vertical
+```
+
+---
+
+# ✂ 7️⃣ Split Arrays
+
+```python
+arr = np.array([1,2,3,4,5,6])
+
+np.split(arr, 3)
+```
+
+Horizontal split:
+
+```python
+arr = np.array([[1,2],[3,4],[5,6]])
+np.vsplit(arr, 3)
+```
+
+---
+
+# 🔍 8️⃣ Indexing & Slicing
+
+```python
+arr = np.array([10,20,30,40,50])
+
+print(arr[0])      # First element
+print(arr[1:4])    # Slice
+```
+
+2D slicing:
+
+```python
+arr = np.array([[1,2,3],
+                [4,5,6]])
+
+print(arr[0,1])    # Row 0, Col 1
+print(arr[:,1])    # All rows, Col 1
+```
+
+---
+
+# 🎭 9️⃣ Boolean Indexing
+
+```python
+arr = np.array([10,20,30,40])
+
+print(arr[arr > 20])
+```
+
+Output:
+```
+[30 40]
+```
+
+---
+
+# 🔃 🔟 Sorting
+
+```python
+arr = np.array([5,2,8,1])
+
+print(np.sort(arr))
+```
+
+Sort 2D:
+
+```python
+arr = np.array([[3,2],[1,4]])
+
+np.sort(arr, axis=0)
+```
+
+---
+
+# 📊 1️⃣1️⃣ Shape & Dimension
+
+```python
+arr.shape      # Shape
+arr.ndim       # Number of dimensions
+arr.size       # Total elements
+arr.dtype      # Data type
+```
+
+---
+
+# 🎯 1️⃣2️⃣ Resize Array
+
+```python
+arr = np.array([1,2,3,4])
+
+arr.resize(2,2)
+print(arr)
+```
+
+---
+
+# 🔢 1️⃣3️⃣ Unique & Count
+
+```python
+arr = np.array([1,2,2,3,3,3])
+
+np.unique(arr)
+```
+
+With count:
+
+```python
+np.unique(arr, return_counts=True)
+```
+
+---
+
+# 📌 1️⃣4️⃣ Reverse Array
+
+```python
+arr = np.array([1,2,3,4])
+
+print(arr[::-1])
+```
+
+---
+
+# 🧮 1️⃣5️⃣ Mathematical Operations
+
+```python
+arr = np.array([1,2,3])
+
+print(arr + 2)
+print(arr * 3)
+print(np.sqrt(arr))
+```
+
+---
+
+# 📊 Important Axis Concept
+
+For 2D Array:
+
+```
+axis=0 → Row wise (Down direction)
+axis=1 → Column wise (Across direction)
+```
+
+Example:
+
+```python
+arr.sum(axis=0)   # Column sum
+arr.sum(axis=1)   # Row sum
+```
+
+---
+
+# 🚀 Final Summary
+
+✔ reshape() → Change shape  
+✔ flatten() → Convert to 1D  
+✔ concatenate() → Join arrays  
+✔ split() → Divide array  
+✔ slicing → Access data  
+✔ boolean indexing → Filter data  
+
+---
+
