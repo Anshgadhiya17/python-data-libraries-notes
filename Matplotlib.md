@@ -1,4 +1,4 @@
-# 📊 Matplotlib Notes (Complete Guide)
+# 📊 Matplotlib Notes
 
 ## 📌 Introduction
 
